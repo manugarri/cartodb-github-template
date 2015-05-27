@@ -1,0 +1,9 @@
+Measles:
+https://team.cartodb.com/u/chriswhong/api/v2_1/viz/bf8349aa-ffe7-11e4-ab40-0e9d821ea90d/viz.json
+
+Nepal:
+https://team.cartodb.com/u/chriswhong/api/v2/viz/e09c89da-fef2-11e4-aece-0e9d821ea90d/viz.json
+
+TODO:  
+-Add a hexbin map
+-Add

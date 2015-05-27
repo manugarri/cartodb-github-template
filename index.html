@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="./favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Google Trends Data Mapping Template</title>
 
     <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/themes/css/cartodb.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -18,26 +18,150 @@
   </head>
 
   <style>
-    html, body, #container {
+    /*html, body, #container {
       height: 100%;
       width: 100%;
       overflow: hidden;
+    }*/
+    .arrow-down {
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 11px solid rgba(255,255,255,0.9);
+      margin: 0 auto;
     }
 
-    body {
-      padding-top: 50px;
+    .cartodb-tooltip h3 {
+      font-size:20px;
+      margin-top:0;
     }
 
-    #map {
+    div.cartodb-timeslider .slider-wrapper {
+      width:auto;
+    }
+
+    div[id$='map'],#torquemap2 {
       width: auto;
-      height: 100%;
+      height: 500px;
     }
+
+    .navbar-custom {
+  background-color: #3f65a1;
+  border-color: #365689;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#567ebd), to(#3f65a1));
+  background-image: -webkit-linear-gradient(top, #567ebd, 0%, #3f65a1, 100%);
+  background-image: -moz-linear-gradient(top, #567ebd 0%, #3f65a1 100%);
+  background-image: linear-gradient(to bottom, #567ebd 0%, #3f65a1 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff567ebd', endColorstr='#ff3f65a1', GradientType=0);
+}
+.navbar-custom .navbar-brand {
+  color: #ffffff;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+  color: #e6e6e6;
+  background-color: transparent;
+}
+.navbar-custom .navbar-text {
+  color: #ffffff;
+}
+.navbar-custom .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+  color: #c0c0c0;
+  background-color: transparent;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+  color: #c0c0c0;
+  background-color: #365689;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#365689), to(#446dae));
+  background-image: -webkit-linear-gradient(top, #365689, 0%, #446dae, 100%);
+  background-image: -moz-linear-gradient(top, #365689 0%, #446dae 100%);
+  background-image: linear-gradient(to bottom, #365689 0%, #446dae 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff365689', endColorstr='#ff446dae', GradientType=0);
+}
+.navbar-custom .navbar-nav > .disabled > a,
+.navbar-custom .navbar-nav > .disabled > a:hover,
+.navbar-custom .navbar-nav > .disabled > a:focus {
+  color: #cccccc;
+  background-color: transparent;
+}
+.navbar-custom .navbar-toggle {
+  border-color: #dddddd;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: #dddddd;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #cccccc;
+}
+.navbar-custom .navbar-collapse,
+.navbar-custom .navbar-form {
+  border-color: #355587;
+}
+.navbar-custom .navbar-nav > .dropdown > a:hover .caret,
+.navbar-custom .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #c0c0c0;
+  border-bottom-color: #c0c0c0;
+}
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+  background-color: #365689;
+  color: #c0c0c0;
+}
+.navbar-custom .navbar-nav > .open > a .caret,
+.navbar-custom .navbar-nav > .open > a:hover .caret,
+.navbar-custom .navbar-nav > .open > a:focus .caret {
+  border-top-color: #c0c0c0;
+  border-bottom-color: #c0c0c0;
+}
+.navbar-custom .navbar-nav > .dropdown > a .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+@media (max-width: 767) {
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #c0c0c0;
+    background-color: transparent;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #c0c0c0;
+    background-color: #365689;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+  }
+}
+.navbar-custom .navbar-link {
+  color: #ffffff;
+}
+.navbar-custom .navbar-link:hover {
+  color: #c0c0c0;
+}
 
   </style>
 
   <body>
 
-    <nav class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-custom">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -46,7 +170,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">CartoDB Bootstrap Template</a>
+          <a class="navbar-brand" href="#">Google Trends Mapping Template</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -58,37 +182,708 @@
       </div>
     </nav>
 
-    <div id="container">
-
-      <div id="map">
+    <div class="container">
+      <h4>Torque Map Using Disaggregated Data</h4>
+      <p>The row for a given time and location is split into many rows based on its aggregate value, and spatio-temporal noise is added. This allows </p>
+      <div id="torquemap">
       </div>
-
+    </div>
+    <div class="container">
+      <h4>Bubble Map</h4>
+      <p>All the data for a given place is grouped and summed, resulting in an overall score over the full time range.</p>
+    </div>
+    <div class="container">
+      <div id="bubblemap">
+      </div>
+    </div>
+    <div class="container">
+      <h4>Country Map</h4>
+      <p>The data are joined with CartoDB's World Borders dataset and the values are summed.</p>
+    </div>
+    <div class="container">
+      <div id="countrymap">
+      </div>
+    </div>
+    <div class="container">
+      <h4>Hex Bin Map</h4>
+      <p>The data are spatially joined with hexbins and the values are summed for each bin.</p>
+    </div>
+    <div class="container">
+      <div id="hexbinmap">
+      </div>
+    </div>
+    <div class="container">
+      <h4>Value-based Torque Map</h4>
+      <p>Radius, color, and duration of markers are varied based on the value column</p>
+    </div>
+    <div class="container">
+      <div id="torquemap2">
+      </div>
     </div><!-- /.container -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.13/cartodb.js"></script>
+<!--     // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.13/cartodb.uncompressed.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="cartocss/html" id="torque_css">
+      
+      /** torque visualization */
+
+      Map {
+      -torque-frame-count:512;
+      -torque-animation-duration:30;
+      -torque-time-attribute:"timestamp";
+      -torque-aggregation-function:"count(timestamp)";
+      -torque-resolution:2;
+      -torque-data-aggregation:linear;
+      }
+
+      #nepaltrends{
+        comp-op: lighter;
+        marker-fill-opacity: 0.6;
+        marker-line-width: 0;
+        marker-line-opacity: .6;
+        marker-type: ellipse;
+        marker-width: 3;
+        marker-fill: #3E7BB6;
+      }
+      #nepaltrends[frame-offset=1] {
+       marker-width:3.5;
+       marker-fill-opacity:.5; 
+      }
+      #nepaltrends[frame-offset=2] {
+       marker-width:4;
+       marker-fill-opacity:.4; 
+      }
+      #nepaltrends[frame-offset=3] {
+       marker-width:4;
+       marker-fill-opacity:.4; 
+      }
+      #nepaltrends[frame-offset=4] {
+       marker-width:3;
+       marker-fill-opacity:.3; 
+      }
+      #nepaltrends[frame-offset=5] {
+       marker-width:2;
+       marker-fill-opacity:.3; 
+      }
+      #nepaltrends[frame-offset=6] {
+       marker-width:1;
+       marker-fill-opacity:.2; 
+      }
+    </script>
+    <script type="cartocss/html" id="bubble_css">
+      
+      /** bubble visualization */
+
+      #nepaltrends{
+        marker-fill-opacity: 0.4;
+        marker-line-color: #FFF;
+        marker-line-width: 0;
+        marker-line-opacity: 1;
+        marker-placement: point;
+        marker-multi-policy: largest;
+        marker-type: ellipse;
+        marker-fill: #5CA2D1;
+        marker-allow-overlap: true;
+        marker-clip: false;
+        marker-comp-op: lighten;
+      }
+      #nepaltrends [ s <= 20833333.333] {
+         marker-width: 50.0;
+      }
+      #nepaltrends [ s <= 18750410.5087312] {
+         marker-width: 45.0;
+      }
+      #nepaltrends [ s <= 16667487.6844624] {
+         marker-width: 40.0;
+      }
+      #nepaltrends [ s <= 14584564.8601936] {
+         marker-width: 35.0;
+      }
+      #nepaltrends [ s <= 12501642.0359248] {
+         marker-width: 30.0;
+      }
+      #nepaltrends [ s <= 10418719.211656] {
+         marker-width: 25.0;
+      }
+      #nepaltrends [ s <= 8335796.3873872] {
+         marker-width: 20.0;
+      }
+      #nepaltrends [ s <= 6252873.5631184] {
+         marker-width: 15.0;
+      }
+      #nepaltrends [ s <= 4169950.7388496] {
+         marker-width: 10.0;
+      }
+      #nepaltrends [ s <= 2087027.9145807999] {
+         marker-width: 5.0;
+      }
+    </script>
+     <script type="cartocss/html" id="country_css">
+      
+      /** choropleth visualization */
+
+      #world_borders{
+        polygon-fill: #EDF8FB;
+        polygon-opacity: 0.8;
+        line-color: #FFF;
+        line-width: 0;
+        line-opacity: 1;
+      }
+      #world_borders [ total <= 1797883388.43168] {
+         polygon-fill: #005824;
+      }
+      #world_borders [ total <= 38121569.26787] {
+         polygon-fill: #238B45;
+      }
+      #world_borders [ total <= 4318708.7576] {
+         polygon-fill: #41AE76;
+      }
+      #world_borders [ total <= 1701053.015794] {
+         polygon-fill: #66C2A4;
+      }
+      #world_borders [ total <= 562644.12648] {
+         polygon-fill: #CCECE6;
+      }
+      #world_borders [ total <= 165963.81593] {
+         polygon-fill: #D7FAF4;
+      }
+      #world_borders [ total <= 73690.62757] {
+         polygon-fill: #EDF8FB;
+      }
+    </script>
+     <script type="cartocss/html" id="hexbin_css">
+      /** choropleth visualization */
+
+      #nepaltrends{
+        polygon-fill: #ECF0F6;
+        polygon-opacity: 0.8;
+        line-color: #FFF;
+        line-width: 0.5;
+        line-opacity: 0;
+      }
+      #nepaltrends [ value <= 286533058.361833] {
+         polygon-fill: #43618F;
+      }
+      #nepaltrends [ value <= 19482813.08067] {
+         polygon-fill: #4E71A6;
+      }
+      #nepaltrends [ value <= 8179042.22722] {
+         polygon-fill: #6182B5;
+      }
+      #nepaltrends [ value <= 3333333.333] {
+         polygon-fill: #849EC5;
+      }
+      #nepaltrends [ value <= 1276602.51187] {
+         polygon-fill: #9BB0D0;
+      }
+      #nepaltrends [ value <= 451440.818226] {
+         polygon-fill: #B2C2DB;
+      }
+      #nepaltrends [ value <= 139577.86208] {
+         polygon-fill: #ECF0F6;
+      }
+    </script>
+    <script type="cartocss/html" id="torquemap2_css">
+     
+ 
+      /** torque visualization */
+
+      Map {
+      -torque-frame-count:512;
+      -torque-animation-duration:30;
+      -torque-time-attribute:"time_in_gmt";
+      -torque-aggregation-function:"sum(value/40000)";
+      -torque-resolution:1;
+      -torque-data-aggregation:linear;
+      }
+
+      #nepaltrends{
+        comp-op: lighter;
+        marker-fill-opacity: 0.8;
+        marker-line-color: #FFF;
+        marker-line-width: 0;
+        marker-line-opacity: 1;
+        marker-type: ellipse;
+      }
+
+      #nepaltrends[value>=0]{
+      marker-fill:#eff3ff;
+        marker-width: 1;
+        marker-fill-opacity: 0.9;
+      }
+      #nepaltrends[value>=0][frame-offset=1]{
+        marker-width: 1.9;
+        marker-fill-opacity: 0.8200000000000001;
+      }
+      #nepaltrends[value>=0][frame-offset=2]{
+        marker-width: 2.8;
+        marker-fill-opacity: 0.74;
+      }
+      #nepaltrends[value>=0][frame-offset=3]{
+        marker-width: 3.7;
+        marker-fill-opacity: 0.66;
+      }
+      #nepaltrends[value>=0][frame-offset=4]{
+        marker-width: 4.6;
+        marker-fill-opacity: 0.5800000000000001;
+      }
+      #nepaltrends[value>=0][frame-offset=5]{
+        marker-width: 5.5;
+        marker-fill-opacity: 0.5;
+      }
+      #nepaltrends[value>=0][frame-offset=6]{
+        marker-width: 6.4;
+        marker-fill-opacity: 0.42000000000000004;
+      }
+      #nepaltrends[value>=0][frame-offset=7]{
+        marker-width: 7.3;
+        marker-fill-opacity: 0.33999999999999997;
+      }
+      #nepaltrends[value>=0][frame-offset=8]{
+        marker-width: 8.2;
+        marker-fill-opacity: 0.26;
+      }
+      #nepaltrends[value>=0][frame-offset=9]{
+        marker-width: 9.1;
+        marker-fill-opacity: 0.18000000000000005;
+      }
+      #nepaltrends[value>=0][frame-offset=10]{
+        marker-width: 10;
+        marker-fill-opacity: 0.09999999999999998;
+      }
+      #nepaltrends[value>=10]{
+      marker-fill:#bdd7e7;
+        marker-width: 1;
+        marker-fill-opacity: 0.9;
+      }
+      #nepaltrends[value>=10][frame-offset=1]{
+        marker-width: 1.75;
+        marker-fill-opacity: 0.85;
+      }
+      #nepaltrends[value>=10][frame-offset=2]{
+        marker-width: 2.5;
+        marker-fill-opacity: 0.8;
+      }
+      #nepaltrends[value>=10][frame-offset=3]{
+        marker-width: 3.25;
+        marker-fill-opacity: 0.75;
+      }
+      #nepaltrends[value>=10][frame-offset=4]{
+        marker-width: 4;
+        marker-fill-opacity: 0.7;
+      }
+      #nepaltrends[value>=10][frame-offset=5]{
+        marker-width: 4.75;
+        marker-fill-opacity: 0.65;
+      }
+      #nepaltrends[value>=10][frame-offset=6]{
+        marker-width: 5.5;
+        marker-fill-opacity: 0.6;
+      }
+      #nepaltrends[value>=10][frame-offset=7]{
+        marker-width: 6.25;
+        marker-fill-opacity: 0.55;
+      }
+      #nepaltrends[value>=10][frame-offset=8]{
+        marker-width: 7;
+        marker-fill-opacity: 0.5;
+      }
+      #nepaltrends[value>=10][frame-offset=9]{
+        marker-width: 7.75;
+        marker-fill-opacity: 0.45;
+      }
+      #nepaltrends[value>=10][frame-offset=10]{
+        marker-width: 8.5;
+        marker-fill-opacity: 0.4;
+      }
+      #nepaltrends[value>=10][frame-offset=11]{
+        marker-width: 9.25;
+        marker-fill-opacity: 0.35;
+      }
+      #nepaltrends[value>=10][frame-offset=12]{
+        marker-width: 10;
+        marker-fill-opacity: 0.29999999999999993;
+      }
+      #nepaltrends[value>=10][frame-offset=13]{
+        marker-width: 10.75;
+        marker-fill-opacity: 0.25;
+      }
+      #nepaltrends[value>=10][frame-offset=14]{
+        marker-width: 11.5;
+        marker-fill-opacity: 0.19999999999999996;
+      }
+      #nepaltrends[value>=10][frame-offset=15]{
+        marker-width: 12.25;
+        marker-fill-opacity: 0.15000000000000002;
+      }
+      #nepaltrends[value>=10][frame-offset=16]{
+        marker-width: 13;
+        marker-fill-opacity: 0.09999999999999998;
+      }
+      #nepaltrends[value>=50]{
+      marker-fill:#6baed6;
+        marker-width: 1;
+        marker-fill-opacity: 0.9;
+      }
+      #nepaltrends[value>=50][frame-offset=1]{
+        marker-width: 1.8181818181818183;
+        marker-fill-opacity: 0.8636363636363636;
+      }
+      #nepaltrends[value>=50][frame-offset=2]{
+        marker-width: 2.6363636363636367;
+        marker-fill-opacity: 0.8272727272727273;
+      }
+      #nepaltrends[value>=50][frame-offset=3]{
+        marker-width: 3.4545454545454546;
+        marker-fill-opacity: 0.7909090909090909;
+      }
+      #nepaltrends[value>=50][frame-offset=4]{
+        marker-width: 4.272727272727273;
+        marker-fill-opacity: 0.7545454545454545;
+      }
+      #nepaltrends[value>=50][frame-offset=5]{
+        marker-width: 5.090909090909091;
+        marker-fill-opacity: 0.7181818181818181;
+      }
+      #nepaltrends[value>=50][frame-offset=6]{
+        marker-width: 5.909090909090909;
+        marker-fill-opacity: 0.6818181818181819;
+      }
+      #nepaltrends[value>=50][frame-offset=7]{
+        marker-width: 6.7272727272727275;
+        marker-fill-opacity: 0.6454545454545455;
+      }
+      #nepaltrends[value>=50][frame-offset=8]{
+        marker-width: 7.545454545454546;
+        marker-fill-opacity: 0.6090909090909091;
+      }
+      #nepaltrends[value>=50][frame-offset=9]{
+        marker-width: 8.363636363636363;
+        marker-fill-opacity: 0.5727272727272728;
+      }
+      #nepaltrends[value>=50][frame-offset=10]{
+        marker-width: 9.181818181818182;
+        marker-fill-opacity: 0.5363636363636364;
+      }
+      #nepaltrends[value>=50][frame-offset=11]{
+        marker-width: 10;
+        marker-fill-opacity: 0.49999999999999994;
+      }
+      #nepaltrends[value>=50][frame-offset=12]{
+        marker-width: 10.818181818181818;
+        marker-fill-opacity: 0.4636363636363636;
+      }
+      #nepaltrends[value>=50][frame-offset=13]{
+        marker-width: 11.636363636363637;
+        marker-fill-opacity: 0.42727272727272725;
+      }
+      #nepaltrends[value>=50][frame-offset=14]{
+        marker-width: 12.454545454545455;
+        marker-fill-opacity: 0.3909090909090909;
+      }
+      #nepaltrends[value>=50][frame-offset=15]{
+        marker-width: 13.272727272727273;
+        marker-fill-opacity: 0.3545454545454545;
+      }
+      #nepaltrends[value>=50][frame-offset=16]{
+        marker-width: 14.090909090909092;
+        marker-fill-opacity: 0.3181818181818181;
+      }
+      #nepaltrends[value>=50][frame-offset=17]{
+        marker-width: 14.90909090909091;
+        marker-fill-opacity: 0.28181818181818175;
+      }
+      #nepaltrends[value>=50][frame-offset=18]{
+        marker-width: 15.727272727272728;
+        marker-fill-opacity: 0.24545454545454537;
+      }
+      #nepaltrends[value>=50][frame-offset=19]{
+        marker-width: 16.545454545454547;
+        marker-fill-opacity: 0.209090909090909;
+      }
+      #nepaltrends[value>=50][frame-offset=20]{
+        marker-width: 17.363636363636363;
+        marker-fill-opacity: 0.17272727272727262;
+      }
+      #nepaltrends[value>=50][frame-offset=21]{
+        marker-width: 18.181818181818183;
+        marker-fill-opacity: 0.13636363636363624;
+      }
+      #nepaltrends[value>=50][frame-offset=22]{
+        marker-width: 19;
+        marker-fill-opacity: 0.09999999999999987;
+      }
+      #nepaltrends[value>=100]{
+      marker-fill:#2171b5;
+        marker-width: 1;
+        marker-fill-opacity: 0.9;
+      }
+      #nepaltrends[value>=100][frame-offset=1]{
+        marker-width: 1.9642857142857144;
+        marker-fill-opacity: 0.8714285714285714;
+      }
+      #nepaltrends[value>=100][frame-offset=2]{
+        marker-width: 2.928571428571429;
+        marker-fill-opacity: 0.8428571428571429;
+      }
+      #nepaltrends[value>=100][frame-offset=3]{
+        marker-width: 3.892857142857143;
+        marker-fill-opacity: 0.8142857142857143;
+      }
+      #nepaltrends[value>=100][frame-offset=4]{
+        marker-width: 4.857142857142858;
+        marker-fill-opacity: 0.7857142857142857;
+      }
+      #nepaltrends[value>=100][frame-offset=5]{
+        marker-width: 5.821428571428571;
+        marker-fill-opacity: 0.7571428571428571;
+      }
+      #nepaltrends[value>=100][frame-offset=6]{
+        marker-width: 6.785714285714286;
+        marker-fill-opacity: 0.7285714285714286;
+      }
+      #nepaltrends[value>=100][frame-offset=7]{
+        marker-width: 7.75;
+        marker-fill-opacity: 0.7;
+      }
+      #nepaltrends[value>=100][frame-offset=8]{
+        marker-width: 8.714285714285715;
+        marker-fill-opacity: 0.6714285714285715;
+      }
+      #nepaltrends[value>=100][frame-offset=9]{
+        marker-width: 9.678571428571429;
+        marker-fill-opacity: 0.6428571428571428;
+      }
+      #nepaltrends[value>=100][frame-offset=10]{
+        marker-width: 10.642857142857142;
+        marker-fill-opacity: 0.6142857142857143;
+      }
+      #nepaltrends[value>=100][frame-offset=11]{
+        marker-width: 11.607142857142858;
+        marker-fill-opacity: 0.5857142857142856;
+      }
+      #nepaltrends[value>=100][frame-offset=12]{
+        marker-width: 12.571428571428571;
+        marker-fill-opacity: 0.5571428571428572;
+      }
+      #nepaltrends[value>=100][frame-offset=13]{
+        marker-width: 13.535714285714286;
+        marker-fill-opacity: 0.5285714285714286;
+      }
+      #nepaltrends[value>=100][frame-offset=14]{
+        marker-width: 14.5;
+        marker-fill-opacity: 0.5;
+      }
+      #nepaltrends[value>=100][frame-offset=15]{
+        marker-width: 15.464285714285715;
+        marker-fill-opacity: 0.4714285714285714;
+      }
+      #nepaltrends[value>=100][frame-offset=16]{
+        marker-width: 16.42857142857143;
+        marker-fill-opacity: 0.44285714285714284;
+      }
+      #nepaltrends[value>=100][frame-offset=17]{
+        marker-width: 17.392857142857142;
+        marker-fill-opacity: 0.41428571428571426;
+      }
+      #nepaltrends[value>=100][frame-offset=18]{
+        marker-width: 18.357142857142858;
+        marker-fill-opacity: 0.3857142857142857;
+      }
+      #nepaltrends[value>=100][frame-offset=19]{
+        marker-width: 19.321428571428573;
+        marker-fill-opacity: 0.3571428571428571;
+      }
+      #nepaltrends[value>=100][frame-offset=20]{
+        marker-width: 20.285714285714285;
+        marker-fill-opacity: 0.3285714285714285;
+      }
+      #nepaltrends[value>=100][frame-offset=21]{
+        marker-width: 21.25;
+        marker-fill-opacity: 0.29999999999999993;
+      }
+      #nepaltrends[value>=100][frame-offset=22]{
+        marker-width: 22.214285714285715;
+        marker-fill-opacity: 0.27142857142857135;
+      }
+      #nepaltrends[value>=100][frame-offset=23]{
+        marker-width: 23.17857142857143;
+        marker-fill-opacity: 0.24285714285714277;
+      }
+      #nepaltrends[value>=100][frame-offset=24]{
+        marker-width: 24.142857142857142;
+        marker-fill-opacity: 0.2142857142857143;
+      }
+      #nepaltrends[value>=100][frame-offset=25]{
+        marker-width: 25.107142857142858;
+        marker-fill-opacity: 0.18571428571428572;
+      }
+      #nepaltrends[value>=100][frame-offset=26]{
+        marker-width: 26.071428571428573;
+        marker-fill-opacity: 0.15714285714285714;
+      }
+      #nepaltrends[value>=100][frame-offset=27]{
+        marker-width: 27.035714285714285;
+        marker-fill-opacity: 0.12857142857142856;
+      }
+      #nepaltrends[value>=100][frame-offset=28]{
+        marker-width: 28;
+        marker-fill-opacity: 0.09999999999999998;
+      }
+    </script>
     <script>
 
-    var map = new L.Map('map', { 
-      center: [40.1,-100.3],
-      zoom: 4
+
+    if(window.location.hash) {
+      var vizJSON = window.location.hash.slice( 1 );
+      console.log(vizJSON);
+    }
+
+    var torquemap = setup('torquemap');
+    var bubblemap = setup('bubblemap');
+    var countrymap = setup('countrymap');
+    var hexbinmap = setup('hexbinmap');
+    var torquemap2 = setup('torquemap2');
+
+
+    $.ajax({
+      url: vizJSON,
+      jsonp: "callback",
+      dataType: "jsonp",
+      success: function( res ) {
+        console.log(res);
+
+        var b = res.bounds;
+
+        var southWest = L.latLng(b[0][0], b[0][1]),
+          northEast = L.latLng(b[1][0], b[1][1]),
+          bounds = L.latLngBounds(southWest, northEast);
+
+        console.log(bounds);
+        torquemap.fitBounds(bounds);
+        bubblemap.fitBounds(bounds);
+        countrymap.fitBounds(bounds);
+        hexbinmap.fitBounds(bounds);
+        torquemap2.fitBounds(bounds);
+
+        var named = res.layers[1].options;
+        console.log(named);
+        var tableName = named.layer_definition.layers[0].options.layer_name;
+        var userName = named.user_name;
+
+        console.log(tableName,userName);
+
+        cartodb.createLayer(torquemap,{
+          type: "torque",
+          options: {
+            //expects time_in_gmt & city to be column names
+            query: "select time_in_gmt + (random()-0.5) * '600 seconds'::interval as timestamp, st_project(the_geom::geography, 10000 * random(), 2*pi()*random())::geometry as the_geom, st_transform(st_project(the_geom::geography, 10000 * random(), 2*pi()*random())::geometry,3857) as the_geom_webmercator, city, generate_series(1,(value/10000)::int) from " + userName + "." + tableName + " WHERE the_geom is not null",
+            user_name: userName,
+            cartocss: $('#torque_css').html(),
+            }
+        }).done(function(layer) {
+              
+        }).addTo(torquemap);
+
+        cartodb.createLayer(bubblemap,{
+          type: "cartodb",
+          user_name: userName,
+          sublayers: [{
+            sql: "SELECT cartodb_id,city, SUM(value) as s, the_geom_webmercator FROM " + userName + "." + tableName + " GROUP BY cartodb_id, city, the_geom_webmercator ORDER BY s desc",
+            cartocss: $('#bubble_css').html(),
+            interactivity: ['cartodb_id','city','s']
+          }]
+        }).done(function(layer) {
+          layer.setInteraction(true);
+
+          var tooltip = new cdb.geo.ui.Tooltip({
+                layer: layer,
+                template: '<div class="cartodb-tooltip-content-wrapper"> <div class="cartodb-tooltip-content"><h3>{{city}}</h3><p>Score: {{s}}</p></div></div><div class="arrow-down"></div>', 
+                width: 200,
+                position: 'middle|center',
+                vertical_offset: -60
+            }); 
+            $('#bubblemap').append(tooltip.render().el);
+
+        
+            
+        }).addTo(bubblemap);
+
+        cartodb.createLayer(countrymap,{
+          type: "cartodb",
+          user_name: userName,
+          sublayers: [{
+            sql: "SELECT a.the_geom, a.the_geom_webmercator, a.name, sum(b.value) AS total FROM chriswhong.world_borders a LEFT JOIN " + userName + "." + tableName + " b ON st_contains(a.the_geom,b.the_geom) GROUP BY a.the_geom, a.name, a.the_geom_webmercator",
+            cartocss: $('#country_css').html(),
+            interactivity: ['name','total']
+          }]
+        }).done(function(layer) {
+          layer.setInteraction(true);
+
+          var tooltip = new cdb.geo.ui.Tooltip({
+                layer: layer,
+                template: '<div class="cartodb-tooltip-content-wrapper"> <div class="cartodb-tooltip-content"><h3>{{name}}</h3><p>Score: {{total}}</p></div></div><div class="arrow-down"></div>', 
+                width: 200,
+                position: 'middle|center',
+                vertical_offset: -60
+            }); 
+            $('#countrymap').append(tooltip.render().el);
+
+        }).addTo(countrymap);
+
+        cartodb.createLayer(hexbinmap,{
+          type: "cartodb",
+          user_name: userName,
+          sublayers: [{
+            sql: "SELECT a.the_geom_webmercator, sum(t.value) as value FROM (SELECT CDB_HexagonGrid(ST_SetSRID((SELECT ST_Extent(the_geom_webmercator) FROM "+ userName + "." + tableName+"),3857), 150000) as the_geom_webmercator) a, "+ userName + "." +tableName+" t WHERE ST_Intersects(a.the_geom_webmercator, t.the_geom_webmercator) GROUP BY a.the_geom_webmercator",
+            cartocss: $('#hexbin_css').html()
+            //interactivity: ['name','total']
+          }]
+        }).done(function(layer) {
+          layer.setInteraction(true);
+
+          var tooltip = new cdb.geo.ui.Tooltip({
+                layer: layer,
+                template: '<div class="cartodb-tooltip-content-wrapper"> <div class="cartodb-tooltip-content"><h3>{{name}}</h3><p>Score: {{total}}</p></div></div><div class="arrow-down"></div>', 
+                width: 200,
+                position: 'middle|center',
+                vertical_offset: -60
+            }); 
+            $('#hexbinmap').append(tooltip.render().el);
+
+        }).addTo(hexbinmap);
+
+        cartodb.createLayer(torquemap2,{
+          type: "torque",
+          options: {
+            //expects time_in_gmt & city to be column names
+            query: "SELECT * FROM " + tableName,
+            user_name: userName,
+            cartocss: $('#torquemap2_css').html(),
+          }
+        }).done(function(layer) {
+        }).addTo(torquemap2);
+
+
+      }
     });
 
-    L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
-      attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
-    }).addTo(map);
 
-    var layerUrl = 'http://documentation.cartodb.com/api/v2/viz/236085de-ea08-11e2-958c-5404a6a683d5/viz.json';
+    //intializes a map for a given div ID
+    function setup(divId){
 
-    cartodb.createLayer(map, layerUrl)
-      .addTo(map)
-      .on('done', function(layer) {
-
-      }).on('error', function() {
-        //log the error
+      var map = new L.Map(divId, {
+        center: [30, 0],
+        zoom: 2,
+        scrollWheelZoom: false
       });
-
+      
+      L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
+        attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
+      }).addTo(map);
+      return map;
+    } 
     </script>
   </body>
 </html>
