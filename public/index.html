@@ -181,7 +181,14 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+    <div class="container">
+      <h4>Country Map</h4>
+      <p>The data are joined with CartoDB's World Borders dataset and the values are summed.</p>
+    </div>
+    <div class="container">
+      <div id="countrymap">
+      </div>
+    </div>
     <div class="container">
       <h4>Torque Map Using Disaggregated Data</h4>
       <p>The row for a given time and location is split into many rows based on its aggregate value, and spatio-temporal noise is added. This allows </p>
@@ -196,14 +203,7 @@
       <div id="bubblemap">
       </div>
     </div>
-    <div class="container">
-      <h4>Country Map</h4>
-      <p>The data are joined with CartoDB's World Borders dataset and the values are summed.</p>
-    </div>
-    <div class="container">
-      <div id="countrymap">
-      </div>
-    </div>
+    
     <div class="container">
       <h4>Hex Bin Map</h4>
       <p>The data are spatially joined with hexbins and the values are summed for each bin.</p>
@@ -223,7 +223,7 @@
 
 <!--     // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
     <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.13/cartodb.uncompressed.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
     <script type="cartocss/html" id="torque_css">
       
       /** torque visualization */
@@ -746,6 +746,7 @@
     var hexbinmap = setup('hexbinmap');
     var torquemap2 = setup('torquemap2');
 
+    console.log('h');
 
     $.ajax({
       url: vizJSON,
