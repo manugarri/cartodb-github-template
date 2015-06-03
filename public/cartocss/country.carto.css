@@ -1,0 +1,33 @@
+
+#world_borders{
+  polygon-fill: #C1373C;
+  polygon-opacity: 0.8;
+  line-color: #FFF;
+  line-width: 0.5;
+  line-opacity: 1;
+}
+#world_borders [ rank <= 100] {
+   polygon-fill: #F2D2D3;
+}
+#world_borders [ rank <= 85] {
+   polygon-fill: #EBB7B9;
+}
+#world_borders [ rank <= 71] {
+   polygon-fill: #E39D9F;
+}
+#world_borders [ rank <= 57] {
+   polygon-fill: #DB8286;
+}
+#world_borders [ rank <= 43] {
+   polygon-fill: #D4686C;
+}
+#world_borders [ rank <= 29] {
+   polygon-fill: #CC4E52;
+}
+#world_borders [ rank <= 15] {
+   polygon-fill: #C1373C;
+}
+#world_borders [ total = null ] {
+  polygon-fill:#e8e6e6
+    ;
+}

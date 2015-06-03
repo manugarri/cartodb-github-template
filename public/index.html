@@ -23,6 +23,11 @@
       width: 100%;
       overflow: hidden;
     }*/
+
+    body {
+      background-color:rgba(242, 242, 242, 0.99);
+    }
+
     .arrow-down {
       width: 0;
       height: 0;
@@ -157,8 +162,66 @@
   color: #c0c0c0;
 }
 
-  </style>
+.leaflet-container {
+  background: #FFF;
+  outline: 0;
+}
 
+  </style>
+<style>
+
+
+
+svg{
+  stroke: #DFDFDF;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+#rim {
+  fill: none;
+  stroke: #999;
+  stroke-width: 3px;
+}
+
+.second-hand{
+  stroke-width:3;
+
+}
+
+.minute-hand{
+  stroke-width:8;
+  stroke-linecap:round;
+}
+
+.hour-hand{
+  stroke-width:12;
+  stroke-linecap:round;
+}
+
+.hands-cover{
+  stroke-width:3;
+  fill:#fff;
+}
+
+.second-tick{
+  stroke-width:3;
+  fill:#000;  
+}
+
+.hour-tick{
+  stroke-width:4; //same as the miute hand
+}
+
+.second-label{
+  font-size: 12px;
+}
+
+.hour-label{
+  font-size: 24px;
+}
+
+
+</style>
   <body>
 
     <nav class="navbar navbar-custom">
@@ -183,7 +246,7 @@
     </nav>
     <div class="container">
       <h4>Country Map</h4>
-      <p>The data are joined with CartoDB's World Borders dataset and the values are summed.</p>
+      <p>The data are joined with CartoDB's World Borders dataset.  The values are summed, then ranked.  Countries with null sums are gray.</p>
     </div>
     <div class="container">
       <div id="countrymap">
@@ -193,7 +256,11 @@
       <h4>Torque Map Using Disaggregated Data</h4>
       <p>The row for a given time and location is split into many rows based on its aggregate value, and spatio-temporal noise is added. This allows </p>
       <div id="torquemap">
+        <div id="myclock" style="margin-top:100px">
+          
+        </div>
       </div>
+      
     </div>
     <div class="container">
       <h4>Bubble Map</h4>
@@ -222,6 +289,8 @@
     </div><!-- /.container -->
 
 <!--     // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="clock.js"></script>
     <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.13/cartodb.uncompressed.js"></script>
      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
     <script type="cartocss/html" id="torque_css">
@@ -283,7 +352,7 @@
         marker-placement: point;
         marker-multi-policy: largest;
         marker-type: ellipse;
-        marker-fill: #5CA2D1;
+        marker-fill: #e5da00;
         marker-allow-overlap: true;
         marker-clip: false;
         marker-comp-op: lighten;
@@ -323,66 +392,75 @@
       
       /** choropleth visualization */
 
-      #world_borders{
-        polygon-fill: #EDF8FB;
-        polygon-opacity: 0.8;
-        line-color: #FFF;
-        line-width: 0;
-        line-opacity: 1;
-      }
-      #world_borders [ total <= 1797883388.43168] {
-         polygon-fill: #005824;
-      }
-      #world_borders [ total <= 38121569.26787] {
-         polygon-fill: #238B45;
-      }
-      #world_borders [ total <= 4318708.7576] {
-         polygon-fill: #41AE76;
-      }
-      #world_borders [ total <= 1701053.015794] {
-         polygon-fill: #66C2A4;
-      }
-      #world_borders [ total <= 562644.12648] {
-         polygon-fill: #CCECE6;
-      }
-      #world_borders [ total <= 165963.81593] {
-         polygon-fill: #D7FAF4;
-      }
-      #world_borders [ total <= 73690.62757] {
-         polygon-fill: #EDF8FB;
-      }
+#world_borders{
+  polygon-fill: #C1373C;
+  polygon-opacity: 0.8;
+  line-color: #FFF;
+  line-width: 0.5;
+  line-opacity: 1;
+}
+#world_borders [ rank <= 99] {
+   polygon-fill: #F2D2D3;
+}
+#world_borders [ rank <= 85] {
+   polygon-fill: #EBB7B9;
+}
+#world_borders [ rank <= 71] {
+   polygon-fill: #E39D9F;
+}
+#world_borders [ rank <= 57] {
+   polygon-fill: #DB8286;
+}
+#world_borders [ rank <= 43] {
+   polygon-fill: #D4686C;
+}
+#world_borders [ rank <= 29] {
+   polygon-fill: #CC4E52;
+}
+#world_borders [ rank <= 15] {
+   polygon-fill: #C1373C;
+}
+#world_borders [ rank = null ] {
+  polygon-fill: #d8d4d4
+}
     </script>
      <script type="cartocss/html" id="hexbin_css">
       /** choropleth visualization */
 
-      #nepaltrends{
-        polygon-fill: #ECF0F6;
-        polygon-opacity: 0.8;
-        line-color: #FFF;
-        line-width: 0.5;
-        line-opacity: 0;
-      }
-      #nepaltrends [ value <= 286533058.361833] {
-         polygon-fill: #43618F;
-      }
-      #nepaltrends [ value <= 19482813.08067] {
-         polygon-fill: #4E71A6;
-      }
-      #nepaltrends [ value <= 8179042.22722] {
-         polygon-fill: #6182B5;
-      }
-      #nepaltrends [ value <= 3333333.333] {
-         polygon-fill: #849EC5;
-      }
-      #nepaltrends [ value <= 1276602.51187] {
-         polygon-fill: #9BB0D0;
-      }
-      #nepaltrends [ value <= 451440.818226] {
-         polygon-fill: #B2C2DB;
-      }
-      #nepaltrends [ value <= 139577.86208] {
-         polygon-fill: #ECF0F6;
-      }
+     /** choropleth visualization */
+
+#nepaltrends{
+  polygon-opacity: 0.9;
+  line-color: #FFF;
+  line-width: 0.5;
+  line-opacity: .4;
+ 
+}
+#nepaltrends [ sum <= 189616776.403833] {
+   polygon-fill: #005824;
+}
+#nepaltrends [ sum <= 93220794.46587] {
+   polygon-fill: #238B45;
+}
+#nepaltrends [ sum <= 18971251.34646] {
+   polygon-fill: #41AE76;
+}
+#nepaltrends [ sum <= 12989569.62331] {
+   polygon-fill: #66C2A4;
+}
+#nepaltrends [ sum <= 4374251.8873] {
+   polygon-fill: #CCECE6;
+}
+#nepaltrends [ sum <= 666666.6667] {
+   polygon-fill: #D7FAF4;
+}
+#nepaltrends [ sum <= 637033.69434] {
+   polygon-fill: #EDF8FB;
+}
+#nepaltrends [ sum = null] {
+  polygon-fill:#777777;
+  polygon-opacity: 0.3;
+}
     </script>
     <script type="cartocss/html" id="torquemap2_css">
      
@@ -784,6 +862,23 @@
             cartocss: $('#torque_css').html(),
             }
         }).done(function(layer) {
+          var clock = new Clock('myclock',200);
+          console.log(clock);
+          clock.draw();
+
+          //call this when torque slider changes:
+          //clock.updateData(time);
+
+          layer.setZIndex(600);
+
+          layer.on('change:time', function(changes) {
+            var time = changes.time;
+            clock.updateData(time);
+
+
+
+
+          });
               
         }).addTo(torquemap);
 
@@ -806,7 +901,7 @@
                 vertical_offset: -60
             }); 
             $('#bubblemap').append(tooltip.render().el);
-
+            layer.setZIndex(600);
         
             
         }).addTo(bubblemap);
@@ -815,21 +910,24 @@
           type: "cartodb",
           user_name: userName,
           sublayers: [{
-            sql: "SELECT a.the_geom, a.the_geom_webmercator, a.name, sum(b.value) AS total FROM chriswhong.world_borders a LEFT JOIN " + userName + "." + tableName + " b ON st_contains(a.the_geom,b.the_geom) GROUP BY a.the_geom, a.name, a.the_geom_webmercator",
+            sql: "SELECT a.cartodb_id, a.the_geom, a.the_geom_webmercator, a.name,sum(b.value), CASE WHEN sum(b.value) is null then null else (rank() OVER (ORDER BY sum(coalesce(b.value, 0)) DESC)) end as rank FROM chriswhong.world_borders_1 a LEFT JOIN chriswhong.nepaltrends b ON st_contains(a.the_geom,b.the_geom) GROUP BY a.cartodb_id, a.the_geom, a.name, a.the_geom_webmercator",
+            
             cartocss: $('#country_css').html(),
-            interactivity: ['name','total']
+            interactivity: ['name','rank']
           }]
         }).done(function(layer) {
           layer.setInteraction(true);
 
           var tooltip = new cdb.geo.ui.Tooltip({
                 layer: layer,
-                template: '<div class="cartodb-tooltip-content-wrapper"> <div class="cartodb-tooltip-content"><h3>{{name}}</h3><p>Score: {{total}}</p></div></div><div class="arrow-down"></div>', 
+                template: '<div class="cartodb-tooltip-content-wrapper"> <div class="cartodb-tooltip-content"><h3>{{name}}</h3><p>Rank:{{rank}}</p></div></div><div class="arrow-down"></div>', 
                 width: 200,
                 position: 'middle|center',
                 vertical_offset: -60
             }); 
             $('#countrymap').append(tooltip.render().el);
+
+
 
         }).addTo(countrymap);
 
@@ -837,7 +935,7 @@
           type: "cartodb",
           user_name: userName,
           sublayers: [{
-            sql: "SELECT a.the_geom_webmercator, sum(t.value) as value FROM (SELECT CDB_HexagonGrid(ST_SetSRID((SELECT ST_Extent(the_geom_webmercator) FROM "+ userName + "." + tableName+"),3857), 150000) as the_geom_webmercator) a, "+ userName + "." +tableName+" t WHERE ST_Intersects(a.the_geom_webmercator, t.the_geom_webmercator) GROUP BY a.the_geom_webmercator",
+            sql: "SELECT h.the_geom_webmercator, sum(n.value) FROM (SELECT CDB_HEXAGONGRID(st_transform(st_setsrid(st_makeenvelope(-180,-89.9,180,89.9),4326),3857),150000) as the_geom_webmercator ) h LEFT JOIN nepaltrends n ON ST_CONTAINS(h.the_geom_webmercator, n.the_geom_webmercator) GROUP BY h.the_geom_webmercator",
             cartocss: $('#hexbin_css').html()
             //interactivity: ['name','total']
           }]
@@ -853,6 +951,8 @@
             }); 
             $('#hexbinmap').append(tooltip.render().el);
 
+            layer.setZIndex(600);
+
         }).addTo(hexbinmap);
 
         cartodb.createLayer(torquemap2,{
@@ -864,6 +964,7 @@
             cartocss: $('#torquemap2_css').html(),
           }
         }).done(function(layer) {
+          layer.setZIndex(600);
         }).addTo(torquemap2);
 
 
@@ -880,9 +981,17 @@
         scrollWheelZoom: false
       });
       
-      L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
-        attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
-      }).addTo(map);
+      if(divId != 'countrymap') {
+
+        // L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
+
+        // }).addTo(map);
+
+        cartodb.createLayer(map, 'https://team.cartodb.com/u/chriswhong/api/v2_1/viz/1ebfeae8-094a-11e5-97a6-0e018d66dc29/viz.json').addTo(map);
+      }
+
+
+
       return map;
     } 
     </script>

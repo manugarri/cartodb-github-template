@@ -1,0 +1,345 @@
+
+      /** torque visualization */
+
+      Map {
+      -torque-frame-count:512;
+      -torque-animation-duration:30;
+      -torque-time-attribute:"time_in_gmt";
+      -torque-aggregation-function:"sum(value/40000)";
+      -torque-resolution:1;
+      -torque-data-aggregation:linear;
+      }
+
+      #nepaltrends{
+        comp-op: lighter;
+        marker-fill-opacity: 0.8;
+        marker-line-color: #FFF;
+        marker-line-width: 0;
+        marker-line-opacity: 1;
+        marker-type: ellipse;
+      }
+
+      #nepaltrends[value>=0]{
+      marker-fill:#eff3ff;
+        marker-width: 1;
+        marker-fill-opacity: 0.9;
+      }
+      #nepaltrends[value>=0][frame-offset=1]{
+        marker-width: 1.9;
+        marker-fill-opacity: 0.8200000000000001;
+      }
+      #nepaltrends[value>=0][frame-offset=2]{
+        marker-width: 2.8;
+        marker-fill-opacity: 0.74;
+      }
+      #nepaltrends[value>=0][frame-offset=3]{
+        marker-width: 3.7;
+        marker-fill-opacity: 0.66;
+      }
+      #nepaltrends[value>=0][frame-offset=4]{
+        marker-width: 4.6;
+        marker-fill-opacity: 0.5800000000000001;
+      }
+      #nepaltrends[value>=0][frame-offset=5]{
+        marker-width: 5.5;
+        marker-fill-opacity: 0.5;
+      }
+      #nepaltrends[value>=0][frame-offset=6]{
+        marker-width: 6.4;
+        marker-fill-opacity: 0.42000000000000004;
+      }
+      #nepaltrends[value>=0][frame-offset=7]{
+        marker-width: 7.3;
+        marker-fill-opacity: 0.33999999999999997;
+      }
+      #nepaltrends[value>=0][frame-offset=8]{
+        marker-width: 8.2;
+        marker-fill-opacity: 0.26;
+      }
+      #nepaltrends[value>=0][frame-offset=9]{
+        marker-width: 9.1;
+        marker-fill-opacity: 0.18000000000000005;
+      }
+      #nepaltrends[value>=0][frame-offset=10]{
+        marker-width: 10;
+        marker-fill-opacity: 0.09999999999999998;
+      }
+      #nepaltrends[value>=10]{
+      marker-fill:#bdd7e7;
+        marker-width: 1;
+        marker-fill-opacity: 0.9;
+      }
+      #nepaltrends[value>=10][frame-offset=1]{
+        marker-width: 1.75;
+        marker-fill-opacity: 0.85;
+      }
+      #nepaltrends[value>=10][frame-offset=2]{
+        marker-width: 2.5;
+        marker-fill-opacity: 0.8;
+      }
+      #nepaltrends[value>=10][frame-offset=3]{
+        marker-width: 3.25;
+        marker-fill-opacity: 0.75;
+      }
+      #nepaltrends[value>=10][frame-offset=4]{
+        marker-width: 4;
+        marker-fill-opacity: 0.7;
+      }
+      #nepaltrends[value>=10][frame-offset=5]{
+        marker-width: 4.75;
+        marker-fill-opacity: 0.65;
+      }
+      #nepaltrends[value>=10][frame-offset=6]{
+        marker-width: 5.5;
+        marker-fill-opacity: 0.6;
+      }
+      #nepaltrends[value>=10][frame-offset=7]{
+        marker-width: 6.25;
+        marker-fill-opacity: 0.55;
+      }
+      #nepaltrends[value>=10][frame-offset=8]{
+        marker-width: 7;
+        marker-fill-opacity: 0.5;
+      }
+      #nepaltrends[value>=10][frame-offset=9]{
+        marker-width: 7.75;
+        marker-fill-opacity: 0.45;
+      }
+      #nepaltrends[value>=10][frame-offset=10]{
+        marker-width: 8.5;
+        marker-fill-opacity: 0.4;
+      }
+      #nepaltrends[value>=10][frame-offset=11]{
+        marker-width: 9.25;
+        marker-fill-opacity: 0.35;
+      }
+      #nepaltrends[value>=10][frame-offset=12]{
+        marker-width: 10;
+        marker-fill-opacity: 0.29999999999999993;
+      }
+      #nepaltrends[value>=10][frame-offset=13]{
+        marker-width: 10.75;
+        marker-fill-opacity: 0.25;
+      }
+      #nepaltrends[value>=10][frame-offset=14]{
+        marker-width: 11.5;
+        marker-fill-opacity: 0.19999999999999996;
+      }
+      #nepaltrends[value>=10][frame-offset=15]{
+        marker-width: 12.25;
+        marker-fill-opacity: 0.15000000000000002;
+      }
+      #nepaltrends[value>=10][frame-offset=16]{
+        marker-width: 13;
+        marker-fill-opacity: 0.09999999999999998;
+      }
+      #nepaltrends[value>=50]{
+      marker-fill:#6baed6;
+        marker-width: 1;
+        marker-fill-opacity: 0.9;
+      }
+      #nepaltrends[value>=50][frame-offset=1]{
+        marker-width: 1.8181818181818183;
+        marker-fill-opacity: 0.8636363636363636;
+      }
+      #nepaltrends[value>=50][frame-offset=2]{
+        marker-width: 2.6363636363636367;
+        marker-fill-opacity: 0.8272727272727273;
+      }
+      #nepaltrends[value>=50][frame-offset=3]{
+        marker-width: 3.4545454545454546;
+        marker-fill-opacity: 0.7909090909090909;
+      }
+      #nepaltrends[value>=50][frame-offset=4]{
+        marker-width: 4.272727272727273;
+        marker-fill-opacity: 0.7545454545454545;
+      }
+      #nepaltrends[value>=50][frame-offset=5]{
+        marker-width: 5.090909090909091;
+        marker-fill-opacity: 0.7181818181818181;
+      }
+      #nepaltrends[value>=50][frame-offset=6]{
+        marker-width: 5.909090909090909;
+        marker-fill-opacity: 0.6818181818181819;
+      }
+      #nepaltrends[value>=50][frame-offset=7]{
+        marker-width: 6.7272727272727275;
+        marker-fill-opacity: 0.6454545454545455;
+      }
+      #nepaltrends[value>=50][frame-offset=8]{
+        marker-width: 7.545454545454546;
+        marker-fill-opacity: 0.6090909090909091;
+      }
+      #nepaltrends[value>=50][frame-offset=9]{
+        marker-width: 8.363636363636363;
+        marker-fill-opacity: 0.5727272727272728;
+      }
+      #nepaltrends[value>=50][frame-offset=10]{
+        marker-width: 9.181818181818182;
+        marker-fill-opacity: 0.5363636363636364;
+      }
+      #nepaltrends[value>=50][frame-offset=11]{
+        marker-width: 10;
+        marker-fill-opacity: 0.49999999999999994;
+      }
+      #nepaltrends[value>=50][frame-offset=12]{
+        marker-width: 10.818181818181818;
+        marker-fill-opacity: 0.4636363636363636;
+      }
+      #nepaltrends[value>=50][frame-offset=13]{
+        marker-width: 11.636363636363637;
+        marker-fill-opacity: 0.42727272727272725;
+      }
+      #nepaltrends[value>=50][frame-offset=14]{
+        marker-width: 12.454545454545455;
+        marker-fill-opacity: 0.3909090909090909;
+      }
+      #nepaltrends[value>=50][frame-offset=15]{
+        marker-width: 13.272727272727273;
+        marker-fill-opacity: 0.3545454545454545;
+      }
+      #nepaltrends[value>=50][frame-offset=16]{
+        marker-width: 14.090909090909092;
+        marker-fill-opacity: 0.3181818181818181;
+      }
+      #nepaltrends[value>=50][frame-offset=17]{
+        marker-width: 14.90909090909091;
+        marker-fill-opacity: 0.28181818181818175;
+      }
+      #nepaltrends[value>=50][frame-offset=18]{
+        marker-width: 15.727272727272728;
+        marker-fill-opacity: 0.24545454545454537;
+      }
+      #nepaltrends[value>=50][frame-offset=19]{
+        marker-width: 16.545454545454547;
+        marker-fill-opacity: 0.209090909090909;
+      }
+      #nepaltrends[value>=50][frame-offset=20]{
+        marker-width: 17.363636363636363;
+        marker-fill-opacity: 0.17272727272727262;
+      }
+      #nepaltrends[value>=50][frame-offset=21]{
+        marker-width: 18.181818181818183;
+        marker-fill-opacity: 0.13636363636363624;
+      }
+      #nepaltrends[value>=50][frame-offset=22]{
+        marker-width: 19;
+        marker-fill-opacity: 0.09999999999999987;
+      }
+      #nepaltrends[value>=100]{
+      marker-fill:#2171b5;
+        marker-width: 1;
+        marker-fill-opacity: 0.9;
+      }
+      #nepaltrends[value>=100][frame-offset=1]{
+        marker-width: 1.9642857142857144;
+        marker-fill-opacity: 0.8714285714285714;
+      }
+      #nepaltrends[value>=100][frame-offset=2]{
+        marker-width: 2.928571428571429;
+        marker-fill-opacity: 0.8428571428571429;
+      }
+      #nepaltrends[value>=100][frame-offset=3]{
+        marker-width: 3.892857142857143;
+        marker-fill-opacity: 0.8142857142857143;
+      }
+      #nepaltrends[value>=100][frame-offset=4]{
+        marker-width: 4.857142857142858;
+        marker-fill-opacity: 0.7857142857142857;
+      }
+      #nepaltrends[value>=100][frame-offset=5]{
+        marker-width: 5.821428571428571;
+        marker-fill-opacity: 0.7571428571428571;
+      }
+      #nepaltrends[value>=100][frame-offset=6]{
+        marker-width: 6.785714285714286;
+        marker-fill-opacity: 0.7285714285714286;
+      }
+      #nepaltrends[value>=100][frame-offset=7]{
+        marker-width: 7.75;
+        marker-fill-opacity: 0.7;
+      }
+      #nepaltrends[value>=100][frame-offset=8]{
+        marker-width: 8.714285714285715;
+        marker-fill-opacity: 0.6714285714285715;
+      }
+      #nepaltrends[value>=100][frame-offset=9]{
+        marker-width: 9.678571428571429;
+        marker-fill-opacity: 0.6428571428571428;
+      }
+      #nepaltrends[value>=100][frame-offset=10]{
+        marker-width: 10.642857142857142;
+        marker-fill-opacity: 0.6142857142857143;
+      }
+      #nepaltrends[value>=100][frame-offset=11]{
+        marker-width: 11.607142857142858;
+        marker-fill-opacity: 0.5857142857142856;
+      }
+      #nepaltrends[value>=100][frame-offset=12]{
+        marker-width: 12.571428571428571;
+        marker-fill-opacity: 0.5571428571428572;
+      }
+      #nepaltrends[value>=100][frame-offset=13]{
+        marker-width: 13.535714285714286;
+        marker-fill-opacity: 0.5285714285714286;
+      }
+      #nepaltrends[value>=100][frame-offset=14]{
+        marker-width: 14.5;
+        marker-fill-opacity: 0.5;
+      }
+      #nepaltrends[value>=100][frame-offset=15]{
+        marker-width: 15.464285714285715;
+        marker-fill-opacity: 0.4714285714285714;
+      }
+      #nepaltrends[value>=100][frame-offset=16]{
+        marker-width: 16.42857142857143;
+        marker-fill-opacity: 0.44285714285714284;
+      }
+      #nepaltrends[value>=100][frame-offset=17]{
+        marker-width: 17.392857142857142;
+        marker-fill-opacity: 0.41428571428571426;
+      }
+      #nepaltrends[value>=100][frame-offset=18]{
+        marker-width: 18.357142857142858;
+        marker-fill-opacity: 0.3857142857142857;
+      }
+      #nepaltrends[value>=100][frame-offset=19]{
+        marker-width: 19.321428571428573;
+        marker-fill-opacity: 0.3571428571428571;
+      }
+      #nepaltrends[value>=100][frame-offset=20]{
+        marker-width: 20.285714285714285;
+        marker-fill-opacity: 0.3285714285714285;
+      }
+      #nepaltrends[value>=100][frame-offset=21]{
+        marker-width: 21.25;
+        marker-fill-opacity: 0.29999999999999993;
+      }
+      #nepaltrends[value>=100][frame-offset=22]{
+        marker-width: 22.214285714285715;
+        marker-fill-opacity: 0.27142857142857135;
+      }
+      #nepaltrends[value>=100][frame-offset=23]{
+        marker-width: 23.17857142857143;
+        marker-fill-opacity: 0.24285714285714277;
+      }
+      #nepaltrends[value>=100][frame-offset=24]{
+        marker-width: 24.142857142857142;
+        marker-fill-opacity: 0.2142857142857143;
+      }
+      #nepaltrends[value>=100][frame-offset=25]{
+        marker-width: 25.107142857142858;
+        marker-fill-opacity: 0.18571428571428572;
+      }
+      #nepaltrends[value>=100][frame-offset=26]{
+        marker-width: 26.071428571428573;
+        marker-fill-opacity: 0.15714285714285714;
+      }
+      #nepaltrends[value>=100][frame-offset=27]{
+        marker-width: 27.035714285714285;
+        marker-fill-opacity: 0.12857142857142856;
+      }
+      #nepaltrends[value>=100][frame-offset=28]{
+        marker-width: 28;
+        marker-fill-opacity: 0.09999999999999998;
+      }

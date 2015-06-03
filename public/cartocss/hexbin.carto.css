@@ -1,0 +1,30 @@
+/** choropleth visualization */
+
+      #nepaltrends{
+        polygon-fill: #ECF0F6;
+        polygon-opacity: 0.8;
+        line-color: #FFF;
+        line-width: 0.5;
+        line-opacity: 0;
+      }
+      #nepaltrends [ value <= 286533058.361833] {
+         polygon-fill: #43618F;
+      }
+      #nepaltrends [ value <= 19482813.08067] {
+         polygon-fill: #4E71A6;
+      }
+      #nepaltrends [ value <= 8179042.22722] {
+         polygon-fill: #6182B5;
+      }
+      #nepaltrends [ value <= 3333333.333] {
+         polygon-fill: #849EC5;
+      }
+      #nepaltrends [ value <= 1276602.51187] {
+         polygon-fill: #9BB0D0;
+      }
+      #nepaltrends [ value <= 451440.818226] {
+         polygon-fill: #B2C2DB;
+      }
+      #nepaltrends [ value <= 139577.86208] {
+         polygon-fill: #ECF0F6;
+      }
